@@ -8,4 +8,3 @@ public class Main {
         vista.setVisible(true);
     }
 }
-jey gorduzo (prueba) , LA NOTA ES UN CEROOOOOOOOOOOOOOOOOOOOOOO , UN CERO EN EL FONDO DEL OJE** 
