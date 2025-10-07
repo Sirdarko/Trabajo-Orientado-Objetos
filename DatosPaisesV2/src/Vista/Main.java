@@ -8,3 +8,4 @@ public class Main {
         vista.setVisible(true);
     }
 }
+jey gorduzo (prueba)
