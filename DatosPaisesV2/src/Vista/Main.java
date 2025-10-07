@@ -8,4 +8,3 @@ public class Main {
         vista.setVisible(true);
     }
 }
- //gay uso hijo de puta , rikishi maricon , 
