@@ -8,4 +8,4 @@ public class Main {
         vista.setVisible(true);
     }
 }
- //gay uso hijo de puta , rikishi maricon , 
+jey gorduzo (prueba) , LA NOTA ES UN CEROOOOOOOOOOOOOOOOOOOOOOO , UN CERO EN EL FONDO DEL OJE** 
