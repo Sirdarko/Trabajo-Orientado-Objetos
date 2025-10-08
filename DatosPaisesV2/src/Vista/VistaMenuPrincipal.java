@@ -28,34 +28,45 @@ public class VistaMenuPrincipal extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         txtComentarios = new javax.swing.JTextArea();
+        JboxInfo = new javax.swing.JComboBox<>();
 
         setToolTipText(" ");
 
         txtComentarios.setColumns(20);
+        txtComentarios.setLineWrap(true);
         txtComentarios.setRows(5);
         txtComentarios.setToolTipText("Ingrese aqui sus comentarios ");
+        txtComentarios.setWrapStyleWord(true);
         jScrollPane1.setViewportView(txtComentarios);
+
+        JboxInfo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "Países", "Ciudades", "Regiones", " " }));
+        JboxInfo.setToolTipText("Seleccione la informacion que desea mostrar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(182, 182, 182)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(463, Short.MAX_VALUE))
+                .addGap(86, 86, 86)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(JboxInfo, 0, 165, Short.MAX_VALUE))
+                .addContainerGap(559, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(104, 104, 104)
+                .addGap(76, 76, 76)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(258, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addComponent(JboxInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(212, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> JboxInfo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea txtComentarios;
     // End of variables declaration//GEN-END:variables
