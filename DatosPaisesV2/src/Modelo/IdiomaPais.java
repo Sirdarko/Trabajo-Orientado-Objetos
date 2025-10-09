@@ -11,23 +11,23 @@ package Modelo;
  */
 public class IdiomaPais {
 
-    // 🔹 Atributos
+    //  Atributos
     private String idioma;          // Nombre del idioma
     private boolean esOficial;      // Indica si el idioma es oficial o no
     private double porcentaje;      // Porcentaje de la población que habla el idioma
 
-    // 🔹 Constructor vacío
+    //  Constructor vacío
     public IdiomaPais() {
     }
 
-    // 🔹 Constructor con parámetros
+    //  Constructor con parámetros
     public IdiomaPais(String idioma, boolean esOficial, double porcentaje) {
         this.idioma = idioma;
         this.esOficial = esOficial;
         this.porcentaje = porcentaje;
     }
 
-    // 🔹 Métodos Getters y Setters
+    //  Métodos Getters y Setters
     public String getIdioma() {
         return idioma;
     }
@@ -52,7 +52,7 @@ public class IdiomaPais {
         this.porcentaje = porcentaje;
     }
 
-    // 🔹 Método para mostrar información del idioma
+    //  Método para mostrar información del idioma
     @Override
     public String toString() {
         String oficial = esOficial ? "Oficial" : "No oficial";
