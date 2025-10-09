@@ -41,9 +41,9 @@ public class Pais {
     public void setPoblacion(int poblacion) { this.poblacion = poblacion; }
 
     // 🔹 Nuevos métodos para idiomas
-    public ArrayList<Idioma> getIdiomas() { return idiomas; }
-    public void setIdiomas(ArrayList<Idioma> idiomas) { this.idiomas = idiomas; }
-    public void agregarIdioma(Idioma idioma) { idiomas.add(idioma); }
+    public ArrayList<IdiomaPais> getIdiomas() { return idiomas; }
+    public void setIdiomas(ArrayList<IdiomaPais> idiomas) { this.idiomas = idiomas; }
+    public void agregarIdioma(IdiomaPais idioma) { idiomas.add(idioma); }
 
     // 🔹 Nuevos métodos para ciudades
     public ArrayList<Ciudad> getCiudades() { return ciudades; }
