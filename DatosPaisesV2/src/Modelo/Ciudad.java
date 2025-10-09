@@ -18,17 +18,17 @@ package Modelo;
 
 public class Ciudad {
 
-    // 🔹 Atributos
+    // Atributos
     private String nombre;
     private String pais;
     private String distrito;
     private int poblacion;
 
-    // 🔹 Constructor vacío
+    //  Constructor vacío
     public Ciudad() {
     }
 
-    // 🔹 Constructor con parámetros
+    //  Constructor con parámetros
     public Ciudad(String nombre, String pais, String distrito, int poblacion) {
         this.nombre = nombre;
         this.pais = pais;
@@ -36,7 +36,7 @@ public class Ciudad {
         this.poblacion = poblacion;
     }
 
-    // 🔹 Getters y Setters
+    // Getters y Setters
     public String getNombre() {
         return nombre;
     }
