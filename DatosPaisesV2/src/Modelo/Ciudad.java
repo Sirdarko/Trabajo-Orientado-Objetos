@@ -8,14 +8,14 @@ package Modelo;
  *
  * @author Angel
  */
-public class Ciudad {
-    package Modelo;
+
+    
 
 /**
  * Clase Ciudad
  * Almacena información de las ciudades de cada país.
  */
-}
+
 public class Ciudad {
 
     // 🔹 Atributos
