@@ -11,7 +11,7 @@ public class Pais {
 
     // 🔹 Nuevos atributos
     private ArrayList<Ciudad> ciudades;
-    private ArrayList<Idioma> idiomas;
+    private ArrayList<IdiomaPais> idiomas;
 
     public Pais() {
         ciudades = new ArrayList<>();
