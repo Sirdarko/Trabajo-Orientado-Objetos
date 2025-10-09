@@ -13,7 +13,7 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VistaMenuPrincipal.class.getName());
 
     /**
-     * Creates new form VistaMenuPrincipal
+     * Creates new form VistaMenuPrincipall
      */
     public VistaMenuPrincipal() {
         initComponents();
