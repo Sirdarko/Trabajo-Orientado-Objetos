@@ -6,7 +6,7 @@ package Modelo;
 
 
  
-public class idiomaPais {
+public class IdiomaPais {
 
     // 🔹 Atributos
     private String nombre;      // Nombre de la ciudad
@@ -15,11 +15,11 @@ public class idiomaPais {
     private int poblacion;      // Cantidad de habitantes
 
     // 🔹 Constructor vacío
-    public idiomaPais() {
+    public IdiomaPais() {
     }
 
     // 🔹 Constructor con parámetros
-    public idiomaPais(String nombre, String pais, String distrito, int poblacion) {
+    public IdiomaPais(String nombre, String pais, String distrito, int poblacion) {
         this.nombre = nombre;
         this.pais = pais;
         this.distrito = distrito;
