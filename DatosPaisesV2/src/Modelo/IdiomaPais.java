@@ -5,67 +5,57 @@
 package Modelo;
 
 
- 
+/**
+ * Clase Idioma
+ * Almacena el idioma que se habla en un país.
+ */
 public class IdiomaPais {
 
     // 🔹 Atributos
-    private String nombre;      // Nombre de la ciudad
-    private String pais;        // País al que pertenece
-    private String distrito;    // Distrito o región
-    private int poblacion;      // Cantidad de habitantes
+    private String idioma;          // Nombre del idioma
+    private boolean esOficial;      // Indica si el idioma es oficial o no
+    private double porcentaje;      // Porcentaje de la población que habla el idioma
 
     // 🔹 Constructor vacío
     public IdiomaPais() {
     }
 
     // 🔹 Constructor con parámetros
-    public IdiomaPais(String nombre, String pais, String distrito, int poblacion) {
-        this.nombre = nombre;
-        this.pais = pais;
-        this.distrito = distrito;
-        this.poblacion = poblacion;
+    public IdiomaPais(String idioma, boolean esOficial, double porcentaje) {
+        this.idioma = idioma;
+        this.esOficial = esOficial;
+        this.porcentaje = porcentaje;
     }
 
     // 🔹 Métodos Getters y Setters
-    public String getNombre() {
-        return nombre;
+    public String getIdioma() {
+        return idioma;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setIdioma(String idioma) {
+        this.idioma = idioma;
     }
 
-    public String getPais() {
-        return pais;
+    public boolean isEsOficial() {
+        return esOficial;
     }
 
-    public void setPais(String pais) {
-        this.pais = pais;
+    public void setEsOficial(boolean esOficial) {
+         this.esOficial = esOficial;
     }
 
-    public String getDistrito() {
-        return distrito;
+    public double getPorcentaje() {
+        return porcentaje;
     }
 
-    public void setDistrito(String distrito) {
-        this.distrito = distrito;
+    public void setPorcentaje(double porcentaje) {
+        this.porcentaje = porcentaje;
     }
 
-    public int getPoblacion() {
-        return poblacion;
-    }
-
-    public void setPoblacion(int poblacion) {
-        this.poblacion = poblacion;
-    }
-
-    // 🔹 Método para mostrar los datos como texto
+    // 🔹 Método para mostrar información del idioma
     @Override
     public String toString() {
-        return "Ciudad: " + nombre + 
-               ", País: " + pais + 
-               ", Distrito: " + distrito + 
-               ", Población: " + poblacion;
+        String oficial = esOficial ? "Oficial" : "No oficial";
+        return idioma + " (" + oficial + ", " + porcentaje + "% de la población)";
     }
 }
-
