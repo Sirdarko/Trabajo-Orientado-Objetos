@@ -192,6 +192,8 @@ public class VistaLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         VistaRegistro vista = new VistaRegistro();
         vista.setVisible(true);
+        
+        this.dispose();
     }//GEN-LAST:event_btnolvidarActionPerformed
 
     private void BtnContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnContraseñaActionPerformed
