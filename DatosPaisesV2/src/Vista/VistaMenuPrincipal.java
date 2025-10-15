@@ -78,6 +78,11 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         jButton1.setText("Siguiente");
 
         jButton2.setText("Atras");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Pais" }));
@@ -205,6 +210,14 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        VistaLogin vista = new VistaLogin ();
+       vista.setVisible(true);
+       
+       this.dispose ();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
