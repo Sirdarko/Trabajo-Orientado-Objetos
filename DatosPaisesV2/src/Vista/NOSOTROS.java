@@ -15,6 +15,7 @@ public class NOSOTROS extends javax.swing.JFrame {
      */
     public NOSOTROS() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

@@ -15,6 +15,7 @@ public class VistaRegistro extends javax.swing.JFrame {
      */
     public VistaRegistro() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -169,6 +170,7 @@ public class VistaRegistro extends javax.swing.JFrame {
         // TODO add your handling code here:
         VistaLogin vista = new VistaLogin ();
        vista.setVisible(true);
+       
        
        this.dispose();
     }//GEN-LAST:event_btnloginregistroActionPerformed

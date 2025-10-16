@@ -25,6 +25,7 @@ public class VistaIdioma extends javax.swing.JFrame {
         initComponents();
         inicializarDatos();
         configurarEventos();
+        this.setLocationRelativeTo(null);
     }
        
       private void inicializarDatos() {

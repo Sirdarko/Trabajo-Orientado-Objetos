@@ -26,6 +26,7 @@
         
     initComponents();
     inicializar();
+    this.setLocationRelativeTo(null);
 }
 
         private void inicializar() {
