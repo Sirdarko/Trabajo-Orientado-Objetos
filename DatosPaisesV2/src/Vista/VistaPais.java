@@ -27,7 +27,7 @@ public class VistaPais extends javax.swing.JFrame {
             this.setLocationRelativeTo(null);
     getContentPane().setBackground(new java.awt.Color(45, 0, 60));
 
-    // Inicializar datos
+    // Inicializar datos y almaceno y modifico con arraylist
     idiomaCiudades.put("Español", new ArrayList<>(Arrays.asList("Santiago", "Madrid", "Buenos Aires")));
     idiomaCiudades.put("Inglés", new ArrayList<>(Arrays.asList("Londres", "Nueva York", "Sídney")));
     idiomaCiudades.put("Francés", new ArrayList<>(Arrays.asList("París", "Marsella", "Montreal")));

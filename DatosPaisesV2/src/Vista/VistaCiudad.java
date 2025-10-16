@@ -2,22 +2,99 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Vista;
+     package Vista;
+    import java.util.*;
+    import javax.swing.*;
 
 /**
  *
  * @author juan_
  */
-public class VistaCiudad extends javax.swing.JFrame {
+    public class VistaCiudad extends javax.swing.JFrame {
+    // Modelos para ComboBox y Lista
+    private DefaultComboBoxModel<String> modeloCiudades;
+    private DefaultListModel<String> modeloPaises;
+
+// Relación entre ciudad y país
+    private Map<String, String> ciudadPais = new HashMap<>();
+
+    
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VistaCiudad.class.getName());
 
     /**
-     * Creates new form VistaCiudad
+     * creo nueva forma en vista ciudad
      */
     public VistaCiudad() {
         initComponents();
+        inicializarDatos();   // llena combo y lista
+        configurarEventos();  // conecta los botones
     }
+    
+
+    private void inicializarDatos() {
+        // Crear algunas ciudades con sus países
+        ciudadPais.put("Guadalajara", "México");
+        ciudadPais.put("Madrid", "España");
+        ciudadPais.put("París", "Francia");
+
+        // Crear el modelo del ComboBox
+        modeloCiudades = new DefaultComboBoxModel<>();
+        for (String ciudad : ciudadPais.keySet()) {
+            modeloCiudades.addElement(ciudad);
+        }
+        
+        jComboBox1.setModel(modeloCiudades);
+
+        modeloPaises = new DefaultListModel<>();
+
+        jList1.setModel(modeloPaises);
+    }
+    
+     private void configurarEventos() {
+
+        // Al seleccionar una ciudad
+        jComboBox1.addActionListener(e -> {
+            String ciudad = (String) jComboBox1.getSelectedItem();
+            if (ciudad != null) {
+                modeloPaises.clear();
+                modeloPaises.addElement(ciudadPais.get(ciudad));
+            }
+        });
+
+        // Botón crear
+        jButton1.addActionListener(e -> {
+            String nuevaCiudad = JOptionPane.showInputDialog("Nombre de la nueva ciudad:");
+            String nuevoPais = JOptionPane.showInputDialog("Nombre del país:");
+
+            if (nuevaCiudad != null && nuevoPais != null && !nuevaCiudad.isEmpty()) {
+                ciudadPais.put(nuevaCiudad, nuevoPais);
+                modeloCiudades.addElement(nuevaCiudad);
+            }
+        });
+        
+        jButton2.addActionListener(e -> {
+            String ciudadSeleccionada = (String) jComboBox1.getSelectedItem();
+            if (ciudadSeleccionada == null) return;
+
+            String nuevaCiudad = JOptionPane.showInputDialog("Nuevo nombre de la ciudad:", ciudadSeleccionada);
+            String nuevoPais = JOptionPane.showInputDialog("Nuevo nombre del país:", ciudadPais.get(ciudadSeleccionada));
+
+            if (nuevaCiudad != null && nuevoPais != null) {
+                ciudadPais.remove(ciudadSeleccionada);
+                ciudadPais.put(nuevaCiudad, nuevoPais);
+
+                modeloCiudades.removeElement(ciudadSeleccionada);
+                modeloCiudades.addElement(nuevaCiudad);
+                jComboBox1.setSelectedItem(nuevaCiudad);
+
+                modeloPaises.clear();
+                modeloPaises.addElement(nuevoPais);
+            }
+        });
+        
+     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,10 +108,11 @@ public class VistaCiudad extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btnAtrasCuidad = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
-        btncrearvistaciudad = new javax.swing.JButton();
-        btneditarvistacuidad = new javax.swing.JButton();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         txtCiudad = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,59 +133,65 @@ public class VistaCiudad extends javax.swing.JFrame {
             }
         });
 
-        btncrearvistaciudad.setText("Editar");
+        jButton2.setText("Editar");
 
-        btneditarvistacuidad.setText("Crear");
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jButton1.setText("Crear");
 
         txtCiudad.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         txtCiudad.setForeground(new java.awt.Color(255, 255, 255));
         txtCiudad.setText("Cuidad");
+
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Paises " };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(jList1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(278, 278, 278)
+                .addComponent(txtCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(283, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(79, 79, 79)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btncrearvistaciudad, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnAtrasCuidad, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(btneditarvistacuidad, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(55, 55, 55)
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(34, 34, 34)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(btnAtrasCuidad, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(278, 278, 278)
-                        .addComponent(txtCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(57, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(55, 55, 55)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(txtCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
+                        .addComponent(btnAtrasCuidad, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(69, 69, 69))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btneditarvistacuidad, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)))
-                .addComponent(btncrearvistaciudad, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
-                .addComponent(btnAtrasCuidad, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -118,9 +202,7 @@ public class VistaCiudad extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 13, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)
         );
 
         pack();
@@ -128,6 +210,7 @@ public class VistaCiudad extends javax.swing.JFrame {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void btnAtrasCuidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasCuidadActionPerformed
@@ -165,11 +248,12 @@ public class VistaCiudad extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtrasCuidad;
-    private javax.swing.JButton btncrearvistaciudad;
-    private javax.swing.JButton btneditarvistacuidad;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel txtCiudad;
     // End of variables declaration//GEN-END:variables
 }
