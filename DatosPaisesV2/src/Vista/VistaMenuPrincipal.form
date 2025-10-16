@@ -102,6 +102,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Paises"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPaisActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnCuidad">
           <Properties>
@@ -110,6 +113,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Cuidades"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCuidadActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnidioma">
           <Properties>

@@ -50,9 +50,19 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
 
         btnPais.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         btnPais.setText("Paises");
+        btnPais.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPaisActionPerformed(evt);
+            }
+        });
 
         btnCuidad.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         btnCuidad.setText("Cuidades");
+        btnCuidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCuidadActionPerformed(evt);
+            }
+        });
 
         btnidioma.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         btnidioma.setText("Idioma");
@@ -132,7 +142,28 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
 
     private void btnidiomaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnidiomaActionPerformed
         // TODO add your handling code here:
+        VistaIdioma vista = new VistaIdioma();
+        vista.setVisible(true);
+        
+        this.dispose();
     }//GEN-LAST:event_btnidiomaActionPerformed
+
+    private void btnPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaisActionPerformed
+        // TODO add your handling code here:
+        VistaPais vista = new VistaPais ();
+        vista.setVisible(true);
+        
+        this.dispose();
+    }//GEN-LAST:event_btnPaisActionPerformed
+
+    private void btnCuidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuidadActionPerformed
+        // TODO add your handling code here:
+        VistaCiudad vista = new VistaCiudad ();
+        vista.setVisible(true);
+        
+        this.dispose();
+        
+    }//GEN-LAST:event_btnCuidadActionPerformed
 
     /**
      * @param args the command line arguments
