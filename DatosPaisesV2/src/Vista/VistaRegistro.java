@@ -160,7 +160,7 @@ public class VistaRegistro extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        VistaMenuPrincipal vista = new VistaMenuPrincipal ();
+        VistaLogin vista = new VistaLogin ();
        vista.setVisible(true);
        
        this.dispose();
