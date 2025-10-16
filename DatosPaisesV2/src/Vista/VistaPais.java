@@ -36,15 +36,15 @@ public class VistaPais extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(51, 0, 51));
         jPanel1.setPreferredSize(new java.awt.Dimension(700, 450));
 
-        btnatraspais.setText("jButton1");
+        btnatraspais.setText("Atras");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(btnatraspais, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(76, 76, 76)
+                .addComponent(btnatraspais, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(478, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
