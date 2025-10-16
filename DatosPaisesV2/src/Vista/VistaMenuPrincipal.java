@@ -33,7 +33,7 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         btnPais = new javax.swing.JButton();
         btnCuidad = new javax.swing.JButton();
         btnidioma = new javax.swing.JButton();
-        txtSeleccionaunaopcion = new javax.swing.JTextField();
+        txttitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 102, 153));
@@ -72,22 +72,14 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        txtSeleccionaunaopcion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        txtSeleccionaunaopcion.setText("Selecciona una opcion");
-        txtSeleccionaunaopcion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSeleccionaunaopcionActionPerformed(evt);
-            }
-        });
+        txttitulo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        txttitulo.setForeground(new java.awt.Color(255, 255, 255));
+        txttitulo.setText("Selecciona Una Opcion");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(281, 281, 281)
-                .addComponent(txtSeleccionaunaopcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(69, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,13 +89,17 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
                         .addComponent(btnCuidad, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnPais, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(66, 66, 66))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(235, 235, 235)
+                .addComponent(txttitulo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(txtSeleccionaunaopcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+                .addComponent(txttitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
                 .addComponent(btnPais, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(btnCuidad, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -135,10 +131,6 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
        
         this.dispose ();
     }//GEN-LAST:event_btnatrasActionPerformed
-
-    private void txtSeleccionaunaopcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSeleccionaunaopcionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSeleccionaunaopcionActionPerformed
 
     private void btnidiomaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnidiomaActionPerformed
         // TODO add your handling code here:
@@ -196,6 +188,6 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnatras;
     private javax.swing.JButton btnidioma;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtSeleccionaunaopcion;
+    private javax.swing.JLabel txttitulo;
     // End of variables declaration//GEN-END:variables
 }
