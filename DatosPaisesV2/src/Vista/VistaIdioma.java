@@ -38,6 +38,11 @@ public class VistaIdioma extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(700, 450));
 
         btnatrasidioma.setText("Atras");
+        btnatrasidioma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnatrasidiomaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -69,6 +74,14 @@ public class VistaIdioma extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnatrasidiomaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnatrasidiomaActionPerformed
+        // TODO add your handling code here:
+        VistaMenuPrincipal vista = new VistaMenuPrincipal();
+        vista.setVisible(true);
+        
+        this.dispose();
+    }//GEN-LAST:event_btnatrasidiomaActionPerformed
 
     /**
      * @param args the command line arguments

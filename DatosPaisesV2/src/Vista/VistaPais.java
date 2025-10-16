@@ -37,6 +37,11 @@ public class VistaPais extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(700, 450));
 
         btnatraspais.setText("jButton1");
+        btnatraspais.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnatraspaisActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -68,6 +73,14 @@ public class VistaPais extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnatraspaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnatraspaisActionPerformed
+        // TODO add your handling code here:
+        VistaMenuPrincipal vista = new VistaMenuPrincipal();
+        vista.setVisible(true);
+        
+        this.dispose();
+    }//GEN-LAST:event_btnatraspaisActionPerformed
 
     /**
      * @param args the command line arguments
