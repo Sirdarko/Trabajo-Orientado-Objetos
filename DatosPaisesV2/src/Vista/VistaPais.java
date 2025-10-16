@@ -4,11 +4,18 @@
  */
 package Vista;
 
+import java.util.*;
+import javax.swing.*;
+
 /**
  *
  * @author juan_
  */
 public class VistaPais extends javax.swing.JFrame {
+    
+    // Estructuras para guardar los datos
+    private Map<String, ArrayList<String>> idiomaCiudades = new HashMap<>();
+    private DefaultListModel<String> modeloLista = new DefaultListModel<>();
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VistaPais.class.getName());
 
@@ -17,6 +24,23 @@ public class VistaPais extends javax.swing.JFrame {
      */
     public VistaPais() {
         initComponents();
+            this.setLocationRelativeTo(null);
+    getContentPane().setBackground(new java.awt.Color(45, 0, 60));
+
+    // Inicializar datos
+    idiomaCiudades.put("Español", new ArrayList<>(Arrays.asList("Santiago", "Madrid", "Buenos Aires")));
+    idiomaCiudades.put("Inglés", new ArrayList<>(Arrays.asList("Londres", "Nueva York", "Sídney")));
+    idiomaCiudades.put("Francés", new ArrayList<>(Arrays.asList("París", "Marsella", "Montreal")));
+
+    // Agregar idiomas al combo
+    jComboBox2.removeAllItems();
+    for (String idioma : idiomaCiudades.keySet()) {
+        jComboBox2.addItem(idioma);
+    }
+
+    // Asignar modelo al JList
+    jList2.setModel(modeloLista);
+
     }
 
     /**
@@ -43,6 +67,11 @@ public class VistaPais extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(700, 450));
 
         btnCrearPais.setText("Crear");
+        btnCrearPais.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearPaisActionPerformed(evt);
+            }
+        });
 
         btnEditarPais.setText("Editar");
         btnEditarPais.addActionListener(new java.awt.event.ActionListener() {
@@ -51,7 +80,7 @@ public class VistaPais extends javax.swing.JFrame {
             }
         });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona Pais", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona Idioma", "Item 2", "Item 3", "Item 4" }));
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
@@ -71,7 +100,7 @@ public class VistaPais extends javax.swing.JFrame {
         });
 
         jList2.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Idioma Hablado", " ", " " };
+            String[] strings = { "Cuidades:", " ", " " };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -108,14 +137,18 @@ public class VistaPais extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCrearPais, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addComponent(btnEditarPais, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
-                .addComponent(btnatras, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnCrearPais, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(40, 40, 40)
+                        .addComponent(btnEditarPais, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                        .addComponent(btnatras, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(62, 62, 62))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -134,10 +167,37 @@ public class VistaPais extends javax.swing.JFrame {
 
     private void btnEditarPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPaisActionPerformed
         // TODO add your handling code here:
+        int index = jList2.getSelectedIndex();
+if (index == -1) {
+    JOptionPane.showMessageDialog(this, "Seleccione una ciudad para editar.");
+    return;
+}
+
+String idiomaSeleccionado = (String) jComboBox2.getSelectedItem();
+String ciudadActual = modeloLista.getElementAt(index);
+String nuevaCiudad = JOptionPane.showInputDialog(this, "Editar ciudad:", ciudadActual);
+
+if (nuevaCiudad != null && !nuevaCiudad.trim().isEmpty()) {
+    idiomaCiudades.get(idiomaSeleccionado).set(index, nuevaCiudad);
+    modeloLista.set(index, nuevaCiudad);
+}
+
+        
     }//GEN-LAST:event_btnEditarPaisActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
+        String idiomaSeleccionado = (String) jComboBox2.getSelectedItem();
+if (idiomaSeleccionado != null) {
+    modeloLista.clear();
+    ArrayList<String> ciudades = idiomaCiudades.get(idiomaSeleccionado);
+    if (ciudades != null) {
+        for (String c : ciudades) {
+            modeloLista.addElement(c);
+        }
+    }
+}
+
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void btnatrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnatrasActionPerformed
@@ -147,6 +207,19 @@ public class VistaPais extends javax.swing.JFrame {
        
        this.dispose();
     }//GEN-LAST:event_btnatrasActionPerformed
+
+    private void btnCrearPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearPaisActionPerformed
+        // TODO add your handling code here:
+        String idiomaSeleccionado = (String) jComboBox2.getSelectedItem();
+if (idiomaSeleccionado == null) return;
+
+String nuevaCiudad = JOptionPane.showInputDialog(this, "Ingrese nueva ciudad:");
+if (nuevaCiudad != null && !nuevaCiudad.trim().isEmpty()) {
+    idiomaCiudades.get(idiomaSeleccionado).add(nuevaCiudad);
+    modeloLista.addElement(nuevaCiudad);
+}
+
+    }//GEN-LAST:event_btnCrearPaisActionPerformed
 
     /**
      * @param args the command line arguments
