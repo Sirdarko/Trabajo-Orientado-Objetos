@@ -47,8 +47,8 @@ public class VistaLogin extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         btnIngreso = new javax.swing.JButton();
-        BtnUsuario = new javax.swing.JTextField();
-        BtnContraseña = new javax.swing.JPasswordField();
+        txtUsuario = new javax.swing.JTextField();
+        btnContraseña = new javax.swing.JPasswordField();
         btnolvidar = new javax.swing.JButton();
         btnolvidecontraceña = new javax.swing.JButton();
 
@@ -95,15 +95,20 @@ public class VistaLogin extends javax.swing.JFrame {
             }
         });
 
-        BtnUsuario.addActionListener(new java.awt.event.ActionListener() {
+        txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnUsuarioActionPerformed(evt);
+                txtUsuarioActionPerformed(evt);
+            }
+        });
+        txtUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtUsuarioKeyTyped(evt);
             }
         });
 
-        BtnContraseña.addActionListener(new java.awt.event.ActionListener() {
+        btnContraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnContraseñaActionPerformed(evt);
+                btnContraseñaActionPerformed(evt);
             }
         });
 
@@ -136,17 +141,17 @@ public class VistaLogin extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(123, 123, 123)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(BtnUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BtnContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(139, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(126, 126, 126)
-                .addComponent(BtnUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
-                .addComponent(BtnContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addComponent(btnIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(55, 55, 55)
@@ -184,9 +189,9 @@ public class VistaLogin extends javax.swing.JFrame {
        this.dispose();
     }//GEN-LAST:event_btnIngresoActionPerformed
 
-    private void BtnUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnUsuarioActionPerformed
+    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BtnUsuarioActionPerformed
+    }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void btnolvidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnolvidarActionPerformed
         // TODO add your handling code here:
@@ -196,9 +201,20 @@ public class VistaLogin extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnolvidarActionPerformed
 
-    private void BtnContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnContraseñaActionPerformed
+    private void btnContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContraseñaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BtnContraseñaActionPerformed
+    }//GEN-LAST:event_btnContraseñaActionPerformed
+
+    private void txtUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyTyped
+        // TODO add your handling code here:
+        //System.out.println("" + evt.getKeyChar());
+        //evt.consume();
+        // le damos un limite de caracteres (8)
+        String usuario = txtUsuario.getText();
+        if (usuario.length() >=8) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtUsuarioKeyTyped
 
     /**
      * @param args the command line arguments
@@ -226,9 +242,8 @@ public class VistaLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPasswordField BtnContraseña;
     private javax.swing.JButton BtnLogin;
-    private javax.swing.JTextField BtnUsuario;
+    private javax.swing.JPasswordField btnContraseña;
     private javax.swing.JButton btnIngreso;
     private javax.swing.JButton btnolvidar;
     private javax.swing.JButton btnolvidecontraceña;
@@ -240,5 +255,6 @@ public class VistaLogin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

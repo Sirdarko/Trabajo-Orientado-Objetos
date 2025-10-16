@@ -109,8 +109,8 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="BtnUsuario" min="-2" pref="238" max="-2" attributes="0"/>
-                              <Component id="BtnContraseña" min="-2" pref="238" max="-2" attributes="0"/>
+                              <Component id="txtUsuario" min="-2" pref="238" max="-2" attributes="0"/>
+                              <Component id="btnContraseña" min="-2" pref="238" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -122,9 +122,9 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="126" max="-2" attributes="0"/>
-                  <Component id="BtnUsuario" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="txtUsuario" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                  <Component id="BtnContraseña" min="-2" pref="47" max="-2" attributes="0"/>
+                  <Component id="btnContraseña" min="-2" pref="47" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                   <Component id="btnIngreso" min="-2" pref="45" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
@@ -149,14 +149,15 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnIngresoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="BtnUsuario">
+        <Component class="javax.swing.JTextField" name="txtUsuario">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnUsuarioActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUsuarioActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtUsuarioKeyTyped"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="BtnContrase&#xf1;a">
+        <Component class="javax.swing.JPasswordField" name="btnContrase&#xf1;a">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnContrase&#xf1;aActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnContrase&#xf1;aActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnolvidar">
