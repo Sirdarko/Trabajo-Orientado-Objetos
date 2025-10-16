@@ -120,7 +120,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="lblMensaje" min="-2" max="-2" attributes="0"/>
                       <Component id="txtUsuario" min="-2" pref="230" max="-2" attributes="0"/>
-                      <Component id="btnContraseña" min="-2" pref="230" max="-2" attributes="0"/>
+                      <Component id="txtContraseña" min="-2" pref="230" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="0" pref="84" max="32767" attributes="0"/>
               </Group>
@@ -149,7 +149,7 @@
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="btnContraseña" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
+                              <Component id="txtContraseña" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
                               <Component id="jLabel6" alignment="3" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
@@ -177,9 +177,10 @@
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtUsuarioKeyTyped"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="btnContrase&#xf1;a">
+        <Component class="javax.swing.JPasswordField" name="txtContrase&#xf1;a">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnContrase&#xf1;aActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtContrase&#xf1;aActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtContrase&#xf1;aKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnolvidar">

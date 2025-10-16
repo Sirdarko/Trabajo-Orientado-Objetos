@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Vista;
+// clase para mostrar ventana de dialogo 
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -48,7 +50,7 @@ public class VistaLogin extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btnIngreso = new javax.swing.JButton();
         txtUsuario = new javax.swing.JTextField();
-        btnContraseña = new javax.swing.JPasswordField();
+        txtContraseña = new javax.swing.JPasswordField();
         btnolvidar = new javax.swing.JButton();
         lblMensaje = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -109,9 +111,14 @@ public class VistaLogin extends javax.swing.JFrame {
             }
         });
 
-        btnContraseña.addActionListener(new java.awt.event.ActionListener() {
+        txtContraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnContraseñaActionPerformed(evt);
+                txtContraseñaActionPerformed(evt);
+            }
+        });
+        txtContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtContraseñaKeyTyped(evt);
             }
         });
 
@@ -163,7 +170,7 @@ public class VistaLogin extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblMensaje)
                     .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 84, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -187,7 +194,7 @@ public class VistaLogin extends javax.swing.JFrame {
                         .addContainerGap(63, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
@@ -201,6 +208,8 @@ public class VistaLogin extends javax.swing.JFrame {
 
     private void BtnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLoginActionPerformed
         // TODO add your handling code here:
+       String usuario = txtUsuario.getText();
+       String password = txtContraseña.getText();
         
        VistaMenuPrincipal vista = new VistaMenuPrincipal ();
        vista.setVisible(true);
@@ -214,12 +223,25 @@ public class VistaLogin extends javax.swing.JFrame {
 
     private void btnIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresoActionPerformed
         // TODO add your handling code here:
-           VistaMenuPrincipal vista = new VistaMenuPrincipal ();
-       vista.setVisible(true);
-       
-       this.dispose();
+        String usuario = txtUsuario.getText();
+        String password = txtContraseña.getText();
+      //ejecuto sentencia si la condicion es verdadera
+        if (usuario.equals("Nemesillo") && password.equals("101010")) {
+        VistaMenuPrincipal vista = new VistaMenuPrincipal();
+        vista.setVisible(true);
+        this.dispose();
+     //ejecuto sentencia si la condicion es falsa   
+    } else {
+        //creo mensaje de error/contraceña de error llamando la clase JOptionPane
+        JOptionPane.showMessageDialog(
+        null,
+        "Error: el usuario o contraseña son incorrectos.",
+        "Error de login",
+        JOptionPane.ERROR_MESSAGE
+    );
+        
     }//GEN-LAST:event_btnIngresoActionPerformed
-
+    }
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsuarioActionPerformed
@@ -232,15 +254,13 @@ public class VistaLogin extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnolvidarActionPerformed
 
-    private void btnContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContraseñaActionPerformed
+    private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnContraseñaActionPerformed
+    }//GEN-LAST:event_txtContraseñaActionPerformed
 
     private void txtUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyTyped
-        // TODO add your handling code here:
-        //System.out.println("" + evt.getKeyChar());
-        //evt.consume();
-        // le damos un limite de caracteres (8)
+        
+        // le damos un limite de caracteres (14)
         //aviso de caracteres restantes 
         
         String usuario = txtUsuario.getText();
@@ -250,10 +270,19 @@ public class VistaLogin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtUsuarioKeyTyped
 
+    private void txtContraseñaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContraseñaKeyTyped
+        // TODO add your handling code here:
+        String contraceña = txtContraseña.getText();
+        
+        if (contraceña.length() >= 6) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtContraseñaKeyTyped
+       
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) { 
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -277,7 +306,6 @@ public class VistaLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnLogin;
-    private javax.swing.JPasswordField btnContraseña;
     private javax.swing.JButton btnIngreso;
     private javax.swing.JButton btnolvidar;
     private javax.swing.JColorChooser jColorChooser1;
@@ -292,6 +320,7 @@ public class VistaLogin extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lblMensaje;
+    private javax.swing.JPasswordField txtContraseña;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
