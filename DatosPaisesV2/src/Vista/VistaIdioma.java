@@ -4,11 +4,17 @@
  */
 package Vista;
 
+import java.util.*;
+import javax.swing.*;
+
 /**
  *
  * @author juan_
  */
 public class VistaIdioma extends javax.swing.JFrame {
+    private DefaultComboBoxModel<String> modeloIdiomas;
+    private DefaultListModel<String> modeloPaises;
+    private Map<String, String> idiomaPais = new HashMap<>();
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VistaIdioma.class.getName());
 
@@ -16,7 +22,68 @@ public class VistaIdioma extends javax.swing.JFrame {
      * Creates new form VistaIdioma
      */
     public VistaIdioma() {
+        initComponents();
+        inicializarDatos();
+        configurarEventos();
+    }
        
+      private void inicializarDatos() {
+        // Idiomas iniciales y su país principal
+        idiomaPais.put("Español", "México");
+        idiomaPais.put("Inglés", "Estados Unidos");
+        idiomaPais.put("Francés", "Francia");
+
+        modeloIdiomas = new DefaultComboBoxModel<>();
+        for (String idioma : idiomaPais.keySet()) {
+            modeloIdiomas.addElement(idioma);
+        }
+
+        jComboBox1.setModel(modeloIdiomas);
+        modeloPaises = new DefaultListModel<>();
+        jList1.setModel(modeloPaises);
+    }
+
+    private void configurarEventos() {
+        // Cuando se selecciona un idioma, mostrar su país en la lista
+        jComboBox1.addActionListener(e -> {
+            String idioma = (String) jComboBox1.getSelectedItem();
+            if (idioma != null) {
+                modeloPaises.clear();
+                modeloPaises.addElement(idiomaPais.get(idioma));
+            }
+        });
+
+        // Botón CREAR
+        jButton1.addActionListener(e -> {
+            String nuevoIdioma = JOptionPane.showInputDialog("Nombre del nuevo idioma:");
+            String nuevoPais = JOptionPane.showInputDialog("País correspondiente:");
+
+            if (nuevoIdioma != null && nuevoPais != null && !nuevoIdioma.isEmpty()) {
+                idiomaPais.put(nuevoIdioma, nuevoPais);
+                modeloIdiomas.addElement(nuevoIdioma);
+            }
+        });
+
+        // Botón EDITAR
+        jButton2.addActionListener(e -> {
+            String idiomaSeleccionado = (String) jComboBox1.getSelectedItem();
+            if (idiomaSeleccionado == null) return;
+
+            String nuevoIdioma = JOptionPane.showInputDialog("Nuevo nombre del idioma:", idiomaSeleccionado);
+            String nuevoPais = JOptionPane.showInputDialog("Nuevo país:", idiomaPais.get(idiomaSeleccionado));
+
+            if (nuevoIdioma != null && nuevoPais != null) {
+                idiomaPais.remove(idiomaSeleccionado);
+                idiomaPais.put(nuevoIdioma, nuevoPais);
+
+                modeloIdiomas.removeElement(idiomaSeleccionado);
+                modeloIdiomas.addElement(nuevoIdioma);
+                jComboBox1.setSelectedItem(nuevoIdioma);
+
+                modeloPaises.clear();
+                modeloPaises.addElement(nuevoPais);
+            }
+        });
     }
 
     /**
@@ -30,9 +97,9 @@ public class VistaIdioma extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         btnatrasidioma = new javax.swing.JButton();
-        jComboBoxIdioma = new javax.swing.JComboBox<>();
-        btnCrear = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
@@ -50,24 +117,24 @@ public class VistaIdioma extends javax.swing.JFrame {
             }
         });
 
-        jComboBoxIdioma.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona Idioma", "Item 2", "Item 3", "Item 4" }));
-        jComboBoxIdioma.addActionListener(new java.awt.event.ActionListener() {
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona Idioma", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxIdiomaActionPerformed(evt);
+                jComboBox1ActionPerformed(evt);
             }
         });
 
-        btnCrear.setText("Crear");
-        btnCrear.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Crear");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCrearActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
-        btnEditar.setText("Editar");
-        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setText("Editar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -93,16 +160,16 @@ public class VistaIdioma extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel1)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(238, 238, 238))
-                            .addComponent(jComboBoxIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(47, 47, 47))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnatrasidioma, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -113,10 +180,10 @@ public class VistaIdioma extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(41, 41, 41)
-                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jComboBoxIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
                 .addComponent(btnatrasidioma, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -145,17 +212,17 @@ public class VistaIdioma extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnatrasidiomaActionPerformed
 
-    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnEditarActionPerformed
+    }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jComboBoxIdiomaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxIdiomaActionPerformed
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxIdiomaActionPerformed
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCrearActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -183,10 +250,10 @@ public class VistaIdioma extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCrear;
-    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnatrasidioma;
-    private javax.swing.JComboBox<String> jComboBoxIdioma;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;

@@ -217,7 +217,7 @@
         // TODO add your handling code here:
          VistaMenuPrincipal vista = new VistaMenuPrincipal ();
        vista.setVisible(true);
-       
+       // se crea metodo para retroceder (atras) en la pagina
        this.dispose();
     }//GEN-LAST:event_btnAtrasCuidadActionPerformed
 
