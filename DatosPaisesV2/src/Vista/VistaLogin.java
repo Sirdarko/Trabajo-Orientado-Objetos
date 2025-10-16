@@ -207,11 +207,9 @@ public class VistaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLoginActionPerformed
-        // TODO add your handling code here:
-       String usuario = txtUsuario.getText();
-       String password = txtContraseña.getText();
-        
-       VistaMenuPrincipal vista = new VistaMenuPrincipal ();
+               //se crea boton atras (retroceder)
+               
+               VistaMenuPrincipal vista = new VistaMenuPrincipal ();
        vista.setVisible(true);
        
        this.dispose();
