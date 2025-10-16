@@ -41,7 +41,7 @@
     jListCiudades.setModel(modeloCiudades);
     jListPaises.setModel(modeloPaises);
 
-    // Cuando seleccionas una ciudad, muestra su país
+    // Cuando se Selecciona una ciudad, muestra su país
     jListCiudades.addListSelectionListener(e -> {
         if (!e.getValueIsAdjusting()) {
             String ciudad = jListCiudades.getSelectedValue();
