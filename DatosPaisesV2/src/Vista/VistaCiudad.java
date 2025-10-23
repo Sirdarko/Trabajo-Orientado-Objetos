@@ -15,6 +15,13 @@ public class VistaCiudad extends javax.swing.JFrame {
     DefaultTableModel modelo;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VistaCiudad.class.getName());
+    private void cargarDatos() {
+    modelo.setRowCount(0); // Limpia la tabla
+    for (Ciudad c : lista) {
+        modelo.addRow(new Object[]{c.nombre, c.pais, c.poblacion});
+    }
+}
+
 
     /**
      * Creates new form VistaCiudad
