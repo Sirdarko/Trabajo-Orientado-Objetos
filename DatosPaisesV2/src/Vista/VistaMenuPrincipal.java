@@ -29,6 +29,8 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         btnatras = new javax.swing.JButton();
         btnCuidad = new javax.swing.JButton();
@@ -37,6 +39,10 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         btnMantenedorPais = new javax.swing.JButton();
         btnusuarios = new javax.swing.JButton();
         btnreportes = new javax.swing.JButton();
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 102, 153));
@@ -87,6 +93,11 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         });
 
         btnreportes.setText("Reportes");
+        btnreportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnreportesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -120,12 +131,13 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addComponent(txttitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnidioma, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnMantenedorPais, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnusuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnreportes, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCuidad, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnidioma, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnusuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnreportes, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCuidad, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(btnatras, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
@@ -172,11 +184,24 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
 
     private void btnMantenedorPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMantenedorPaisActionPerformed
         // TODO add your handling code here:
+        VistaMantenedorPais vista = new VistaMantenedorPais();
+        vista.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnMantenedorPaisActionPerformed
 
     private void btnusuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnusuariosActionPerformed
         // TODO add your handling code here:
+        VistaUsuarios vista = new VistaUsuarios();
+        vista.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnusuariosActionPerformed
+
+    private void btnreportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnreportesActionPerformed
+        // TODO add your handling code here:
+        VistaReportes vista = new VistaReportes();
+        vista.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnreportesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -211,6 +236,8 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnreportes;
     private javax.swing.JButton btnusuarios;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel txttitulo;
     // End of variables declaration//GEN-END:variables
 }
