@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Pais {
 
     protected int codigo;
+    protected String nombre;
     protected String nombrePais;
     protected String continente;
     protected int poblacion;
@@ -18,8 +19,9 @@ public class Pais {
         idiomas = new ArrayList<>();
     }
 
-    public Pais(int codigo, String nombrePais, String continente, int poblacion) {
+    public Pais(int codigo,String nombre ,String nombrePais , String continente, int poblacion) {
         this.codigo = codigo;
+        this.nombre = nombre;
         this.nombrePais = nombrePais;
         this.continente = continente;
         this.poblacion = poblacion;
