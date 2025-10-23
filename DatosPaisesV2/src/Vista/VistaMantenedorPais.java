@@ -23,7 +23,7 @@ public class VistaMantenedorPais extends javax.swing.JFrame {
      */
     public VistaMantenedorPais() {
        initComponents();
-        modelo = new DefaultTableModel(new Object[]{"Código", "Nombre", "Población"}, 0);
+        modelo = new DefaultTableModel(new Object[]{"Código", "Nombre", "Población", "Continente"}, 0);
         jTable1.setModel(modelo);
         this.setLocationRelativeTo(null);
        
@@ -32,11 +32,13 @@ public class VistaMantenedorPais extends javax.swing.JFrame {
         String codigo;
         String nombre;
         int poblacion;
+        String continente;
 
-        Pais(String codigo, String nombre, int poblacion) {
+        Pais(String codigo, String nombre, int poblacion, String continente) {
             this.codigo = codigo;
             this.nombre = nombre;
             this.poblacion = poblacion;
+            this.continente = continente;
         }
     }
     /**
@@ -190,16 +192,16 @@ public class VistaMantenedorPais extends javax.swing.JFrame {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
      lista.clear();
       
-     lista.add(new Pais("001", "Chile", 19000000));
-     lista.add(new Pais("002", "Argentina", 46000000));
-     lista.add(new Pais("003", "Perú", 34000000));
-     lista.add(new Pais("004", "Brasil", 214000000));
-     lista.add(new Pais("005", "México", 129000000));
-     lista.add(new Pais("006", "Colombia", 52000000));
-     lista.add(new Pais("007", "España", 48000000));
-     lista.add(new Pais("008", "Uruguay", 3500000));
-     lista.add(new Pais("009", "Ecuador", 18000000));
-     lista.add(new Pais("010", "Paraguay", 7000000));
+     lista.add(new Pais("001", "Chile", 19000000, "SurAmerica"));
+     lista.add(new Pais("002", "Argentina", 46000000, "SurAmerica"));
+     lista.add(new Pais("003", "Perú", 34000000, "SurAmerica"));
+     lista.add(new Pais("004", "Brasil", 214000000, "SurAmerica"));
+     lista.add(new Pais("005", "México", 129000000, "SurAmerica"));
+     lista.add(new Pais("006", "Colombia", 52000000, "SurAmerica"));
+     lista.add(new Pais("007", "España", 48000000, "Europa"));
+     lista.add(new Pais("008", "Uruguay", 3500000, "SurAmerica"));
+     lista.add(new Pais("009", "Ecuador", 18000000, "SurAmerica"));
+     lista.add(new Pais("010", "Paraguay", 7000000, "SurAmerica"));
 
         cargarDatos();
    
@@ -231,7 +233,7 @@ public class VistaMantenedorPais extends javax.swing.JFrame {
 
         for (Pais p : lista) {
             if (p.nombre.toLowerCase().contains(nombreBuscar)) {
-                modelo.addRow(new Object[]{p.codigo, p.nombre, p.poblacion});
+                modelo.addRow(new Object[]{p.codigo, p.nombre, p.poblacion, p.continente});
                 encontrado = true;
             }
         }
@@ -266,7 +268,7 @@ public class VistaMantenedorPais extends javax.swing.JFrame {
     private void cargarDatos() {
            modelo.setRowCount(0); // limpia la tabla
         for (Pais p : lista) {
-            modelo.addRow(new Object[]{p.codigo, p.nombre, p.poblacion});
+            modelo.addRow(new Object[]{p.codigo, p.nombre, p.poblacion, p.continente});
         }
     }
     /**
