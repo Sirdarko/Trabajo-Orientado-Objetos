@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Vista;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,6 +19,25 @@ public class VistaRegistro extends javax.swing.JFrame {
     public VistaRegistro() {
         initComponents();
         this.setLocationRelativeTo(null);
+        // Limitar caracteres del usuario (máx 14) y contraseña (máx 12)
+        txtUsuario.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                if (txtUsuario.getText().length() >= 14) e.consume();
+            }
+        });
+
+        txtContraseña.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                if (txtContraseña.getPassword().length >= 12) e.consume();
+            }
+        });
+
+        txtContraseñaConfirm.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                if (txtContraseñaConfirm.getPassword().length >= 12) e.consume();
+            }
+        });
+
     }
 
     /**
@@ -30,9 +52,9 @@ public class VistaRegistro extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        txtContraseña = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
-        jPasswordField2 = new javax.swing.JPasswordField();
+        txtContraseñaConfirm = new javax.swing.JPasswordField();
         jLabel5 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
         btnloginregistro = new javax.swing.JButton();
@@ -50,10 +72,9 @@ public class VistaRegistro extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Contraseña:");
 
-        jPasswordField1.setText("jPasswordField1");
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        txtContraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                txtContraseñaActionPerformed(evt);
             }
         });
 
@@ -61,10 +82,9 @@ public class VistaRegistro extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Confirmar contraseña:");
 
-        jPasswordField2.setText("jPasswordField2");
-        jPasswordField2.addActionListener(new java.awt.event.ActionListener() {
+        txtContraseñaConfirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField2ActionPerformed(evt);
+                txtContraseñaConfirmActionPerformed(evt);
             }
         });
 
@@ -72,7 +92,6 @@ public class VistaRegistro extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Usuario:");
 
-        txtUsuario.setText("nombre");
         txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsuarioActionPerformed(evt);
@@ -111,8 +130,8 @@ public class VistaRegistro extends javax.swing.JFrame {
                         .addGap(118, 118, 118)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtUsuario)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
-                            .addComponent(jPasswordField2)))
+                            .addComponent(txtContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
+                            .addComponent(txtContraseñaConfirm)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addComponent(btnloginregistro, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -134,11 +153,11 @@ public class VistaRegistro extends javax.swing.JFrame {
                 .addGap(46, 46, 46)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(59, 59, 59)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtContraseñaConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(66, 66, 66)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
@@ -164,6 +183,7 @@ public class VistaRegistro extends javax.swing.JFrame {
 
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void btnloginregistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginregistroActionPerformed
@@ -175,16 +195,56 @@ public class VistaRegistro extends javax.swing.JFrame {
        this.dispose();
     }//GEN-LAST:event_btnloginregistroActionPerformed
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+        
+    }//GEN-LAST:event_txtContraseñaActionPerformed
 
-    private void jPasswordField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField2ActionPerformed
+    private void txtContraseñaConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaConfirmActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField2ActionPerformed
+        
+    }//GEN-LAST:event_txtContraseñaConfirmActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        //obtiene lo que el usuario escribió
+    String usuario = txtUsuario.getText();
+    String pass1 = new String(txtContraseña.getPassword());
+    String pass2 = new String(txtContraseñaConfirm.getPassword());
+
+    // Verificar que los campos no estén vacíos
+    if (usuario.isEmpty() || pass1.isEmpty() || pass2.isEmpty()) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Completa todos los campos");
+        return;
+    }
+
+    // Verificar largo de la contraseña
+    if (pass1.length() < 6) {
+        javax.swing.JOptionPane.showMessageDialog(this, "La contraseña debe tener al menos 6 caracteres");
+        return;
+    }
+
+    if (pass1.length() > 12) {
+        javax.swing.JOptionPane.showMessageDialog(this, "La contraseña no puede tener más de 12 caracteres");
+        return;
+    }
+
+    // Verificar que ambas contraseñas sean iguales
+    if (!pass1.equals(pass2)) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Las contraseñas no coinciden");
+        return;
+    }
+
+    // Guardar el usuario temporalmente (solo mientras el programa está abierto)
+    VistaLogin.usuarioTemporal = usuario;
+    VistaLogin.contraseñaTemporal = pass1;
+
+    javax.swing.JOptionPane.showMessageDialog(this, "Usuario creado correctamente");
+
+    // Volver al login
+    VistaLogin login = new VistaLogin();
+    login.setVisible(true);
+    this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -230,8 +290,8 @@ public class VistaRegistro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
+    private javax.swing.JPasswordField txtContraseña;
+    private javax.swing.JPasswordField txtContraseñaConfirm;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

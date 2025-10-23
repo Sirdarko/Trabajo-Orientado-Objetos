@@ -17,6 +17,9 @@ public class VistaLogin extends javax.swing.JFrame {
     /**
      * Creates new form VistaLogin
      */
+    // variables que solo viven mientras la app este abierta
+    public static String usuarioTemporal = null;
+    public static String contraseñaTemporal = null;
     public VistaLogin() {
         initComponents();
         setTitle("inicio de sesión");
@@ -29,6 +32,7 @@ public class VistaLogin extends javax.swing.JFrame {
         this.setResizable(false);
         
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -233,23 +237,23 @@ public class VistaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void btnIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresoActionPerformed
-        // TODO add your handling code here:
         String usuario = txtUsuario.getText();
-        String password = txtContraseña.getText();
-      //ejecuto sentencia si la condicion es verdadera
-        if (usuario.equals("Nemesillo") && password.equals("101010")) {
-        VistaMenuPrincipal vista = new VistaMenuPrincipal();
-        vista.setVisible(true);
+    String password = new String(txtContraseña.getPassword());
+
+    // Si coincide con el usuario fijo
+    if (usuario.equals("Nemesillo") && password.equals("101010")) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Bienvenido, " + usuario);
+        new VistaMenuPrincipal().setVisible(true);
         this.dispose();
-     //ejecuto sentencia si la condicion es falsa   
-    } else {
-        //creo mensaje de error/contraceña de error llamando la clase JOptionPane
-        JOptionPane.showMessageDialog(
-        null,
-        "Error: el usuario o contraseña son incorrectos.",
-        "Error de login",
-        JOptionPane.ERROR_MESSAGE
-    );
+    }
+    // Si coincide con el usuario recién registrado
+    else if (usuario.equals(usuarioTemporal) && password.equals(contraseñaTemporal)) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Bienvenido, " + usuario);
+        new VistaMenuPrincipal().setVisible(true);
+        this.dispose();
+    } 
+    else {
+        javax.swing.JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos");
         
     }//GEN-LAST:event_btnIngresoActionPerformed
     }
@@ -285,7 +289,7 @@ public class VistaLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         String contraceña = txtContraseña.getText();
         
-        if (contraceña.length() >= 6) {
+        if (contraceña.length() >= 12) {
             evt.consume();
         }
     }//GEN-LAST:event_txtContraseñaKeyTyped
