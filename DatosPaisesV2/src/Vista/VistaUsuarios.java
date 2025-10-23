@@ -17,6 +17,7 @@ public class VistaUsuarios extends javax.swing.JFrame {
      */
     public VistaUsuarios() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
