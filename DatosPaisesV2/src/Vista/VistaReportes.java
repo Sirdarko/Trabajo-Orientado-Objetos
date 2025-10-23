@@ -4,22 +4,110 @@
  */
 package Vista;
 
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Eloy
  */
 public class VistaReportes extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VistaReportes.class.getName());
+   private JTable tablaReportes;
+   private DefaultTableModel modelo;
+   private JScrollPane scroll;
+   private JButton btnRegreso;
+   private JPanel jPanel1;
+    
+   public VistaReportes(DefaultTableModel modeloUsuarios) {
+        initComponents();
+        
+        this.setLocationRelativeTo(null);
+        this.setTitle("Reporte de Usuarios");
+
+        // Crear un nuevo modelo
+        modelo = new DefaultTableModel();
+
+        // Copiar columnas
+        for (int i = 0; i < modeloUsuarios.getColumnCount(); i++) {
+            modelo.addColumn(modeloUsuarios.getColumnName(i));
+        }
+
+        // Copiar filas
+        for (int i = 0; i < modeloUsuarios.getRowCount(); i++) {
+            Object[] fila = new Object[modeloUsuarios.getColumnCount()];
+            for (int j = 0; j < modeloUsuarios.getColumnCount(); j++) {
+                fila[j] = modeloUsuarios.getValueAt(i, j);
+            }
+            modelo.addRow(fila);
+        }
+
+        // Crear tabla y agregar al panel
+        tablaReportes = new JTable(modelo);
+        scroll = new JScrollPane(tablaReportes);
+        scroll.setBounds(30, 30, 700, 300);
+        jPanel1.add(scroll);
+    }
+
+    /**
+     * Constructor vacío (para probar sin VistaUsuarios)
 
     /**
      * Creates new form VistaReportes
      */
-    public VistaReportes() {
+   
+         public VistaReportes() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setTitle("Reporte de Usuarios");
+
+        // Modelo de ejemplo
+        modelo = new DefaultTableModel();
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Correo");
+        modelo.addColumn("Contraseña");
+
+        modelo.addRow(new Object[]{"Juan Pérez", "juan@example.com", "1234"});
+        modelo.addRow(new Object[]{"María López", "maria@example.com", "abc123"});
+        modelo.addRow(new Object[]{"Carlos Ruiz", "carlos@example.com", "pass2025"});
+
+        tablaReportes = new JTable(modelo);
+        scroll = new JScrollPane(tablaReportes);
+        scroll.setBounds(30, 30, 700, 300);
+        jPanel1.add(scroll);
+    }
+         private void initComponents() {
+
+        jPanel1 = new javax.swing.JPanel();
+        btnRegreso = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(51, 0, 51));
+
+        jPanel1.setBackground(new java.awt.Color(51, 0, 51));
+        jPanel1.setLayout(null);
+
+        btnRegreso.setText("Regresar");
+        btnRegreso.setBounds(330, 350, 120, 30);
+        btnRegreso.addActionListener(evt -> btnRegresoActionPerformed(evt));
+        jPanel1.add(btnRegreso);
+
+        getContentPane().add(jPanel1);
+        setSize(800, 450);
+        setLocationRelativeTo(null);
     }
 
+    private void btnRegresoActionPerformed(java.awt.event.ActionEvent evt) {
+        VistaMenuPrincipal vista = new VistaMenuPrincipal();
+        vista.setVisible(true);
+        this.dispose();
+    }
+
+    public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(() -> new VistaReportes().setVisible(true));
+    }
+
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,13 +119,18 @@ public class VistaReportes extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         btnRegreso = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        btnMostrarDatos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Ventana de Reportes");
         setAlwaysOnTop(true);
         setBackground(new java.awt.Color(51, 0, 51));
 
         jPanel1.setBackground(new java.awt.Color(51, 0, 51));
 
+        btnRegreso.setBackground(new java.awt.Color(204, 204, 204));
         btnRegreso.setText("Regreso");
         btnRegreso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -45,19 +138,44 @@ public class VistaReportes extends javax.swing.JFrame {
             }
         });
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        btnMostrarDatos.setText("Mostar");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(346, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnRegreso)
                 .addGap(20, 20, 20))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(btnMostrarDatos, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(88, 88, 88))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(298, Short.MAX_VALUE)
+                .addContainerGap(47, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMostrarDatos))
+                .addGap(18, 18, 18)
                 .addComponent(btnRegreso)
                 .addGap(18, 18, 18))
         );
@@ -109,7 +227,10 @@ public class VistaReportes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnMostrarDatos;
     private javax.swing.JButton btnRegreso;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
