@@ -3,12 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Vista;
-
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
 /**
  *
- * @author Eloy
+ * @author Angel
  */
 public class VistaCiudad extends javax.swing.JFrame {
+    ArrayList<Ciudad> lista = new ArrayList<>();
+    DefaultTableModel modelo;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VistaCiudad.class.getName());
 
@@ -17,8 +21,22 @@ public class VistaCiudad extends javax.swing.JFrame {
      */
     public VistaCiudad() {
         initComponents();
+        modelo = new DefaultTableModel(new Object[]{"nombre", "pais", "Población"}, 0);
+        jTable2.setModel(modelo);
         this.setLocationRelativeTo(null);
     }
+    class Ciudad {
+        String nombre;
+        String pais;
+        int poblacion;
+        
+         Ciudad (String nombre, String pais, int poblacion) {
+            this.nombre = nombre;
+            this.pais = pais;
+            this.poblacion = poblacion;
+        }
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,6 +49,14 @@ public class VistaCiudad extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         btnRegreso = new javax.swing.JButton();
+        btnMostrar = new javax.swing.JButton();
+        btnBusqueda = new javax.swing.JButton();
+        btnActualizar2 = new javax.swing.JButton();
+        txtNombre = new javax.swing.JTextField();
+        txtPaises = new javax.swing.JTextField();
+        txtPoblacion2 = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 0, 51));
@@ -44,21 +70,93 @@ public class VistaCiudad extends javax.swing.JFrame {
             }
         });
 
+        btnMostrar.setText("Mostrar Ciudades");
+        btnMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarActionPerformed(evt);
+            }
+        });
+
+        btnBusqueda.setText("Buscar");
+        btnBusqueda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBusquedaActionPerformed(evt);
+            }
+        });
+
+        btnActualizar2.setText("Actualizar");
+        btnActualizar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizar2ActionPerformed(evt);
+            }
+        });
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(302, Short.MAX_VALUE)
-                .addComponent(btnRegreso)
-                .addGap(20, 20, 20))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addComponent(btnMostrar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                            .addComponent(txtPaises, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtPoblacion2, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnActualizar2, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                            .addComponent(btnBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnRegreso)
+                        .addGap(60, 60, 60))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(btnMostrar)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(3, 3, 3)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnActualizar2, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+                    .addComponent(txtPaises))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtPoblacion2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(249, Short.MAX_VALUE)
+                .addContainerGap(26, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
                 .addComponent(btnRegreso)
-                .addGap(18, 18, 18))
+                .addGap(26, 26, 26))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -81,6 +179,71 @@ public class VistaCiudad extends javax.swing.JFrame {
         vista.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRegresoActionPerformed
+
+    private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
+       lista.clear();
+        
+     lista.add(new Ciudad("Tokyo", "Japon",14215906));
+     lista.add(new Ciudad("São Paulo", "Brazil", 12396372));
+     lista.add(new Ciudad("CDMX", "Mexico",9209944));
+     lista.add(new Ciudad("Nueva York", "Estados Unidos",8804109));
+     lista.add(new Ciudad("Santiago", "Chile",7123891));
+     lista.add(new Ciudad("Río de Janeiro", "Brazil", 6211423));
+     lista.add(new Ciudad("Los Angeles", "Estados Unidos",3983540));
+     lista.add(new Ciudad("Berlín", "Alemania", 3769495));
+     lista.add(new Ciudad("Madrid", "España", 3416771));
+     lista.add(new Ciudad("Chicago", "Estados Unidos",2746388));
+     lista.add(new Ciudad("Hamburgo", "Alemania", 1857727));
+     lista.add(new Ciudad("Múnich", "Alemania", 1562096));
+     lista.add(new Ciudad("Kioto", "Japon",1463723));
+     lista.add(new Ciudad("Guadalajara", "Mexico", 1385621));
+     lista.add(new Ciudad("Monterrey", "Mexico", 1142953));
+     lista.add(new Ciudad("Sevilla", "España", 687488));
+     lista.add(new Ciudad("A Coruña", "Galicia", 249261));
+     lista.add(new Ciudad("Santiago de Compostela", "Galicia",99536));
+        cargarDatos();
+    }//GEN-LAST:event_btnMostrarActionPerformed
+
+    private void btnActualizar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizar2ActionPerformed
+            int fila = jTable2.getSelectedRow();
+        if (fila >= 0) {
+            VistaCiudad.Ciudad Ciudad = lista.get(fila);
+            Ciudad.nombre = txtNombre.getText();
+            Ciudad.nombre = txtNombre.getText();
+            try {
+                Ciudad.poblacion = Integer.parseInt(txtPoblacion2.getText());
+                cargarDatos();
+                JOptionPane.showMessageDialog(this, " Ciudad actualizado.");
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Población debe ser número.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecciona una ciudad para actualizar.");
+        }
+    }//GEN-LAST:event_btnActualizar2ActionPerformed
+
+    private void btnBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBusquedaActionPerformed
+        String nombreBuscar = txtNombre.getText().trim().toLowerCase();
+
+        if (nombreBuscar.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Escribe una Ciudad para buscar.");
+            return;
+        }
+
+        modelo.setRowCount(0);
+        boolean encontrado = false;
+
+        for (VistaCiudad.Ciudad p : lista) {
+            if (p.nombre.toLowerCase().contains(nombreBuscar)) {
+                modelo.addRow(new Object[]{p.nombre, p.pais, p.poblacion});
+                encontrado = true;
+            }
+        }
+
+        if (!encontrado) {
+            JOptionPane.showMessageDialog(this, "No se encontró la Ciudad.");
+        }        
+    }//GEN-LAST:event_btnBusquedaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -108,7 +271,15 @@ public class VistaCiudad extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizar2;
+    private javax.swing.JButton btnBusqueda;
+    private javax.swing.JButton btnMostrar;
     private javax.swing.JButton btnRegreso;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtPaises;
+    private javax.swing.JTextField txtPoblacion2;
     // End of variables declaration//GEN-END:variables
 }
