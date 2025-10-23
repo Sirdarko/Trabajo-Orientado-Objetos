@@ -8,14 +8,14 @@ package Vista;
  *
  * @author Eloy
  */
-public class VistaIdioma extends javax.swing.JFrame {
+public class VistaReportes extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VistaIdioma.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VistaReportes.class.getName());
 
     /**
-     * Creates new form VistaIdioma
+     * Creates new form VistaReportes
      */
-    public VistaIdioma() {
+    public VistaReportes() {
         initComponents();
     }
 
@@ -66,7 +66,7 @@ public class VistaIdioma extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new VistaIdioma().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new VistaReportes().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
