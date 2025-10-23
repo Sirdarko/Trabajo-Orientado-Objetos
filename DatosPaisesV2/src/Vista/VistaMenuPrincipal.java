@@ -38,7 +38,6 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         txttitulo = new javax.swing.JLabel();
         btnMantenedorPais = new javax.swing.JButton();
         btnusuarios = new javax.swing.JButton();
-        btnreportes = new javax.swing.JButton();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -60,7 +59,7 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
 
         btnCuidad.setBackground(new java.awt.Color(255, 255, 204));
         btnCuidad.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
-        btnCuidad.setText("Cuidades");
+        btnCuidad.setText("Ciudades");
         btnCuidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCuidadActionPerformed(evt);
@@ -97,35 +96,22 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnreportes.setBackground(new java.awt.Color(255, 255, 204));
-        btnreportes.setText("Reportes");
-        btnreportes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnreportesActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnatras, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(558, Short.MAX_VALUE)
-                        .addComponent(btnatras, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
                         .addComponent(btnMantenedorPais, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(26, 26, 26)
                         .addComponent(btnCuidad, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(30, 30, 30)
                         .addComponent(btnidioma, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnusuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnreportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(26, 26, 26)))
+                        .addGap(27, 27, 27)
+                        .addComponent(btnusuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(25, 25, 25))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(235, 235, 235)
@@ -141,7 +127,6 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnidioma, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnusuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnreportes, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCuidad, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnMantenedorPais, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
@@ -202,13 +187,6 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnusuariosActionPerformed
 
-    private void btnreportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnreportesActionPerformed
-        // TODO add your handling code here:
-        VistaReportes vista = new VistaReportes();
-        vista.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnreportesActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -239,7 +217,6 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnMantenedorPais;
     private javax.swing.JButton btnatras;
     private javax.swing.JButton btnidioma;
-    private javax.swing.JButton btnreportes;
     private javax.swing.JButton btnusuarios;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
